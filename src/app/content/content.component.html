@@ -1,0 +1,64 @@
+<div class="header" style="background: linear-gradient(135deg, #ff758c, #ff7eb3);">
+    <div class="flex justify-content-between align-items-center">
+        <a class="text-white cursor-pointer m-4 p-2 border-round hover:bg-pink-600 transition-colors transition-duration-300">Contact</a> 
+        <h1 class="text-white text-4xl font-bold text-shadow">Happy 25th Birthday Babe!</h1>
+        <div class="flex gap-3 m-4">
+            <a class="text-white cursor-pointer p-2 border-round hover:bg-pink-600 transition-colors transition-duration-300">Home</a>
+            <a class="text-white cursor-pointer p-2 border-round hover:bg-pink-600 transition-colors transition-duration-300">About</a>
+        </div>
+    </div>
+</div>
+
+<div class="pt-5 px-5">
+    <div class="card shadow-5">
+        <p-carousel
+          [value]="image"
+          [numVisible]="3"
+          [numScroll]="1"
+          [circular]="true"
+          [autoplayInterval]="2000"
+          [showIndicators]="true"
+          [showNavigators]="true"
+        >
+          <ng-template let-item pTemplate="item">
+            <div class="border-1 border-pink-200 border-round-xl m-2 p-2 surface-card">
+              <div class="mb-3">
+                <div class="relative mx-auto">
+                  <img
+                    [src]="item.image"
+                    class="product-img border-round-xl shadow-2 w-full"
+                    style="height: 150px; object-fit: cover;"
+                  />
+                  <p class="text-center mt-2 text-pink-700 font-medium">{{item.caption}}</p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+    </div>
+</div>
+
+<!-- Interactive Birthday Cake Section -->
+<div class="text-center my-6 px-5">
+  <h3 class="text-2xl text-pink-600 mb-4">Make a Wish and Blow the Candles!</h3>
+  <div class="cake-container">
+    <div class="cake-base"></div>
+    <div class="cake-top"></div>
+    <div *ngFor="let candle of candles" 
+         class="candle" 
+         [class.candle-out]="candle.blown"
+         >
+      <div class="flame" *ngIf="!candle.blown"></div>
+    </div>
+  </div>
+ 
+</div>
+
+<div class="surface-ground text-center">
+    <div class="border-round-xl surface-card p-5 shadow-3 max-w-4 mx-auto">
+        <i class="pi pi-heart text-pink-500 text-5xl mb-3"></i>
+        <h2 class="text-3xl text-pink-700 mb-3">To the Most Amazing Person</h2>
+        <p class="text-lg line-height-3">Wishing you a fantastic 25th birthday filled with joy, laughter, 
+        and all your favorite things! May this year bring you happiness and success in everything you do. I Love You So Much</p>
+    </div>
+</div>

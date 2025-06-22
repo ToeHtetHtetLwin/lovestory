@@ -1,0 +1,71 @@
+.header{
+    background-color: rgb(228, 59, 87);
+    width:100%;
+  
+}
+
+/* Cake Styles */
+.cake-container {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.cake-base {
+  width: 180px;
+  height: 80px;
+  background: linear-gradient(to bottom, #f9c5d1, #f2789f);
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+.cake-top {
+  width: 200px;
+  height: 40px;
+  background: linear-gradient(to bottom, #fef2f4, #f9c5d1);
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  top: 40px;
+}
+
+.candle {
+  width: 8px;
+  height: 40px;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  position: absolute;
+  bottom: 80px;
+  cursor: pointer;
+}
+
+.candle:nth-child(odd) {
+  background: linear-gradient(to right, #a18cd1, #fbc2eb);
+}
+
+.flame {
+  width: 12px;
+  height: 20px;
+  background: linear-gradient(to top, #ff2400, #fffb00);
+  border-radius: 50% 50% 20% 20%;
+  position: absolute;
+  top: -20px;
+  left: -2px;
+  animation: flicker 0.5s infinite alternate;
+  box-shadow: 0 0 10px #ff8800;
+}
+
+.candle-out {
+  opacity: 0.5;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.1, 0.9); opacity: 0.8; }
+}
+
+/* Position the 25 candles */
+.candle:nth-child(1) { left: 10px; }
+.candle:nth-child(2) { left: 20px; }
+/* Continue positioning all 25 candles... */
