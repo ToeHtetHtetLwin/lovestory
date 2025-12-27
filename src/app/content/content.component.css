@@ -1,71 +1,314 @@
-.header{
-    background-color: rgb(228, 59, 87);
-    width:100%;
-  
+/* Page Setup */
+.love-page-wrapper {
+    background-color: #fffafa;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Cake Styles */
-.cake-container {
-  position: relative;
-  width: 200px;
-  height: 150px;
-  margin: 0 auto;
+/* Hero Header */
+.hero-section {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+    border-bottom-left-radius: 50% 40px;
+    border-bottom-right-radius: 50% 40px;
 }
 
-.cake-base {
-  width: 180px;
-  height: 80px;
-  background: linear-gradient(to bottom, #f9c5d1, #f2789f);
-  border-radius: 0 0 20px 20px;
-  position: absolute;
-  bottom: 0;
-  left: 10px;
+.main-title {
+    font-size: 3.5rem;
+    font-family: 'Georgia', serif;
+    margin: 0;
 }
 
-.cake-top {
-  width: 200px;
-  height: 40px;
-  background: linear-gradient(to bottom, #fef2f4, #f9c5d1);
-  border-radius: 50% 50% 0 0;
-  position: absolute;
-  top: 40px;
+.sub-title {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 40px;
+    opacity: 0.9;
 }
 
-.candle {
-  width: 8px;
-  height: 40px;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  position: absolute;
-  bottom: 80px;
-  cursor: pointer;
+/* Apology Card */
+.apology-note {
+    display: flex;
+    justify-content: center;
+    margin-top: -40px;
+    padding: 0 20px;
 }
 
-.candle:nth-child(odd) {
-  background: linear-gradient(to right, #a18cd1, #fbc2eb);
+.note-card {
+    background: white;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #ffe4e6;
 }
 
-.flame {
-  width: 12px;
-  height: 20px;
-  background: linear-gradient(to top, #ff2400, #fffb00);
-  border-radius: 50% 50% 20% 20%;
-  position: absolute;
-  top: -20px;
-  left: -2px;
-  animation: flicker 0.5s infinite alternate;
-  box-shadow: 0 0 10px #ff8800;
+.heart-icon {
+    font-size: 2rem;
+    color: #ff4d6d;
+    margin-bottom: 10px;
 }
 
-.candle-out {
-  opacity: 0.5;
+/* Memory Grid */
+.memory-grid-container {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-@keyframes flicker {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.1, 0.9); opacity: 0.8; }
+.grid-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
-/* Position the 25 candles */
-.candle:nth-child(1) { left: 10px; }
-.candle:nth-child(2) { left: 20px; }
-/* Continue positioning all 25 candles... */
+.grid-header .line {
+    height: 1px;
+    flex: 1;
+    background: #ffb3c1;
+    max-width: 100px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* Compact Card Customization */
+::ng-deep .compact-card .p-card {
+    border-radius: 15px !important;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    transition: transform 0.3s ease;
+}
+
+::ng-deep .compact-card .p-card:hover {
+    transform: translateY(-8px);
+}
+
+.image-wrapper {
+    height: 300px;
+    position: relative;
+}
+
+.memory-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 77, 109, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.compact-card:hover .image-overlay { opacity: 1; }
+
+.card-body { padding: 15px; text-align: center; }
+
+/* Custom Confirmation Dialog Styles */
+.dialog-custom {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+}
+
+.dialog-icon-circle {
+    background: #fff0f3;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.dialog-icon-circle i {
+    font-size: 2.5rem;
+    color: #ff4d6d;
+}
+
+.dialog-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #c9184a;
+    margin-bottom: 10px;
+}
+
+.dialog-message {
+    text-align: center;
+    color: #666;
+    line-height: 1.5;
+}
+
+::ng-deep .p-dialog-mask {
+    background: rgba(255, 192, 203, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+.pretty-footer {
+    position: relative;
+    background: #fff0f3; /* Very soft pink */
+    padding: 0 0 40px 0;
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* The SVG Wave at the top of the footer */
+.footer-wave {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.footer-wave svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 100px;
+}
+
+.footer-wave .shape-fill {
+    fill: #fff0f3; /* Matches footer background */
+}
+
+/* Footer Internal Content */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.heart-line {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.heart-line .dot {
+    width: 40px;
+    height: 1px;
+    background: #ffb3c1;
+}
+
+.heart-line i {
+    color: #ff4d6d;
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+.footer-message {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #c9184a;
+    font-size: 1.2rem;
+    max-width: 80%;
+}
+
+.made-with {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.made-with strong {
+    color: #ff4d6d;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+/* Small pulse animation for the heart */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.love-input-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.love-box {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  border: 1px solid #ffe4e6;
+}
+
+.love-question {
+  color: #ff4d6d;
+  margin: 0;
+}
+
+.input-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-input {
+  border-radius: 20px !important;
+  border: 1px solid #ffb3c1 !important;
+  padding: 10px 15px !important;
+}
+
+.surprise-area {
+  margin-top: 25px;
+}
+
+.secret-text {
+  color: #d63384;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.final-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 15px;
+  border: 3px solid white;
+}
+
+/* Smooth Fade In */
+.fadein {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
