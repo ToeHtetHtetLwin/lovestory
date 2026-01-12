@@ -1,0 +1,35 @@
+.header-gradient {
+    background: linear-gradient(45deg, #9c27b0, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Polaroid Effect */
+.polaroid {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.polaroid:hover {
+    transform: scale(1.08) rotate(-2deg);
+    z-index: 5;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* Custom Pink Button */
+::ng-deep .p-button-pink {
+    background: #ec4899 !important;
+    border: none !important;
+}
+
+::ng-deep .p-button-pink:hover {
+    background: #db2777 !important;
+}
+
+/* Ensure images have a consistent height */
+::ng-deep .p-image img {
+    object-fit: cover;
+    height: 180px;
+    width: 220px;
+}
+

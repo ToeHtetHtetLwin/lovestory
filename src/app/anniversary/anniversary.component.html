@@ -1,0 +1,91 @@
+<p-toast></p-toast>
+
+<div class="min-h-screen surface-ground p-2 md:p-6 lg:p-8 overflow-x-hidden">
+    
+    <div class="text-center mb-4 md:mb-6 mt-4">
+        <p-badge value="Year Nine" severity="danger" styleClass="mb-2"></p-badge>
+        <h1 class="text-4xl md:text-6xl font-bold m-0 text-900 header-gradient">Our Journey</h1>
+        <p class="text-lg md:text-xl text-500 mt-2 font-italic px-3">"Counting every second with you."</p>
+    </div>
+
+    <div class="grid justify-content-center px-2">
+        
+        <div class="col-12 md:col-6 lg:col-4 mb-3">
+            <p-card styleClass="shadow-4 border-round-xl h-full">
+                <div class="flex flex-column align-items-center py-2">
+                    <div class="flex justify-content-center gap-3 md:gap-4 mb-4">
+                        <div class="text-center">
+                            <span class="block text-3xl md:text-4xl font-bold text-pink-500">{{duration.years}}</span>
+                            <span class="text-600 uppercase text-xs font-bold">Years</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-3xl md:text-4xl font-bold text-pink-500">{{duration.months}}</span>
+                            <span class="text-600 uppercase text-xs font-bold">Months</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-3xl md:text-4xl font-bold text-pink-500">{{duration.days}}</span>
+                            <span class="text-600 uppercase text-xs font-bold">Days</span>
+                        </div>
+                    </div>
+                    
+                    <p-divider align="center" styleClass="w-full">
+                        <span class="p-tag p-tag-rounded bg-blue-500 px-3">{{totalDaysTogether}} Days Total</span>
+                    </p-divider>
+                    
+                    <div class="w-full mt-4">
+                        <div class="flex justify-content-between mb-2 px-1">
+                            <span class="text-xs md:text-sm text-500">Yearly Progress</span>
+                            <span class="text-xs md:text-sm font-bold text-pink-500">{{progressToNextAnniversary}}%</span>
+                        </div>
+                        <p-progressBar [value]="progressToNextAnniversary" [showValue]="false" styleClass="h-1rem"></p-progressBar>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+
+        <div class="col-12 md:col-6 lg:col-5 mb-3">
+            <p-card header="Key Dates" styleClass="shadow-4 border-round-xl h-full">
+                <div class="flex flex-column gap-3">
+                    @for (event of timelineEvents; track event.label) {
+                        <div class="flex align-items-center p-2 md:p-3 surface-card border-1 surface-border border-round-xl">
+                            <div class="bg-pink-50 border-circle w-2rem h-2rem md:w-3rem md:h-3rem flex align-items-center justify-content-center mr-2 md:mr-3">
+                                <i [class]="event.icon + ' text-pink-500 text-sm md:text-xl'"></i>
+                            </div>
+                            <div class="flex flex-column">
+                                <span class="text-sm md:text-lg font-bold text-900">{{event.label}}</span>
+                                <span class="text-600 text-xs md:text-sm">{{event.date}}</span>
+                            </div>
+                            <p-tag [value]="event.tag" severity="info" styleClass="ml-auto text-xs px-2"></p-tag>
+                        </div>
+                    }
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <div class="grid justify-content-center mt-2 md:mt-4 px-2">
+        <div class="col-12 lg:col-9">
+            <p-card header="Our Memories" styleClass="shadow-4 border-round-xl">
+                <div class="flex flex-wrap justify-content-center gap-3 md:gap-4">
+                    @for (photo of photos; track photo.source) {
+                        <div class="polaroid p-2 surface-0 shadow-2 border-round-sm">
+                            <p-image [src]="photo.source" [alt]="photo.alt" 
+                                     imageClass="responsive-img"
+                                     [preview]="true">
+                            </p-image>
+                            <p class="text-center font-italic text-600 mt-2 mb-1 text-xs">{{photo.alt}}</p>
+                        </div>
+                    }
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <div class="flex justify-content-center mt-6 mb-8">
+        <p-button label="Unlock Secret Message" 
+                  icon="pi pi-lock" 
+                  (onClick)="showSecret()" 
+                  styleClass="p-button-rounded p-button-pink p-button-raised p-button-lg w-full md:w-auto mx-4 shadow-6">
+        </p-button>
+    </div>
+</div>
