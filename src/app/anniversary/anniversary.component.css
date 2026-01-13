@@ -1,35 +1,77 @@
+/* --- Background & Header --- */
 .header-gradient {
-    background: linear-gradient(45deg, #9c27b0, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: linear-gradient(45deg, #ff6b6b, #f06292);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Polaroid Effect */
-.polaroid {
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
+.floating {
+  animation: float 4s ease-in-out infinite;
 }
 
-.polaroid:hover {
-    transform: scale(1.08) rotate(-2deg);
-    z-index: 5;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
 }
 
-/* Custom Pink Button */
-::ng-deep .p-button-pink {
-    background: #ec4899 !important;
-    border: none !important;
+/* --- Glassmorphism Cards --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease;
 }
 
-::ng-deep .p-button-pink:hover {
-    background: #db2777 !important;
+.glass-card:hover {
+  transform: translateY(-5px);
 }
 
-/* Ensure images have a consistent height */
-::ng-deep .p-image img {
-    object-fit: cover;
-    height: 180px;
-    width: 220px;
+/* --- Small Polaroids --- */
+.polaroid-small {
+  background: white;
+  padding: 8px 8px 15px 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
+.polaroid-small:nth-child(odd) { transform: rotate(-2deg); }
+.polaroid-small:nth-child(even) { transform: rotate(2deg); }
+
+.polaroid-small:hover {
+  transform: rotate(0deg) scale(1.1) !important;
+  z-index: 10;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* --- Bright Action Button --- */
+.bright-btn {
+  background: linear-gradient(45deg, #ffd700, #ff8a00, #ff0080);
+  background-size: 200% auto;
+  color: white;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 0, 128, 0.3);
+  transition: 0.4s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bright-btn:hover {
+  background-position: right center;
+  box-shadow: 0 15px 25px rgba(255, 0, 128, 0.4);
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 0, 128, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 0, 128, 0); }
+  100% { transform: scale(1); }
+}

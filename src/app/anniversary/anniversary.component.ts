@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-// PrimeNG Imports
 import { CardModule } from 'primeng/card';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { BadgeModule } from 'primeng/badge';
@@ -31,14 +29,17 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class AnniversaryComponent implements OnInit {
+  public duration = { years: 0, months: 0, days: 0 };
+  public totalDaysTogether = 0;
+  public progressToNextAnniversary = 0;
 
-  duration = { years: 0, months: 0, days: 0 };
-  totalDaysTogether = 0;
-  progressToNextAnniversary = 0;
+  public photos = [
+    { source: 'assets/anni1.jpg', alt: 'Our Happy Memory' },
+    { source: 'assets/b2.jpg', alt: 'Our Happy Memory' },
+    { source: 'assets/b1.jpg', alt: 'Our Happy Memory' },
+  ];
 
-  photos = [{ source: 'assets/anni1.jpg', alt: 'Our Happy Memory' },{ source: 'assets/b2.jpg', alt: 'Our Happy Memory' },{ source: 'assets/b1.jpg', alt: 'Our Happy Memory' }];
-
-  timelineEvents = [
+  public timelineEvents = [
     {
       label: 'The Day We Met',
       date: 'December 1, 2017',
@@ -53,15 +54,15 @@ export class AnniversaryComponent implements OnInit {
     },
   ];
 
-  constructor(private messageService: MessageService) {}
-
-  ngOnInit() {
+  constructor(private messageService: MessageService) {
     this.calculateDetailedDuration();
   }
 
+  ngOnInit() {}
+
   calculateDetailedDuration() {
     const start = new Date('2017-12-01');
-    const today = new Date(); 
+    const today = new Date();
 
     let years = today.getFullYear() - start.getFullYear();
     let months = today.getMonth() - start.getMonth();
@@ -79,8 +80,6 @@ export class AnniversaryComponent implements OnInit {
     }
 
     this.duration = { years, months, days };
-
-    // Total Days Calculation
     const diffTime = Math.abs(today.getTime() - start.getTime());
     this.totalDaysTogether = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
@@ -89,6 +88,7 @@ export class AnniversaryComponent implements OnInit {
       nextAnniversary.setFullYear(today.getFullYear() + 1);
     }
     const totalYearMs = 365 * 24 * 60 * 60 * 1000;
+    //Calculate already completed percentage
     const remainingMs = nextAnniversary.getTime() - today.getTime();
     this.progressToNextAnniversary = Math.round(
       100 - (remainingMs / totalYearMs) * 100
